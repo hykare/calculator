@@ -1,3 +1,9 @@
+const display = document.getElementById('display');
+const calculator = document.getElementById('calculator');
+
+calculator.addEventListener('click', inputDigit);
+
+
 function add(a, b) {
     return a + b;
 }
@@ -22,4 +28,21 @@ function operate(operator, a, b) {
             return divide(a, b);
     }
 }
+
+function inputDigit(e) {
+    if (e.target.className === 'digit') {
+        displayValue += e.target.value;
+        updateDisplay();
+    }
+}
+function updateDisplay() {
+    display.textContent = displayValue;
+}
+let displayValue = '';
+let num1 = '';
+let num2 = '';
+
+
+let result = operate('add', 3, 5);
+console.log(result);
 
