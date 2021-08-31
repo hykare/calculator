@@ -15,7 +15,7 @@ main{
     border-radius: 0.9rem;
     display: grid;
     grid-template-columns: repeat(4, 3rem);
-    grid-template-rows: repeat(6, 3rem);
+    grid-template-rows: 3.5rem repeat(5, 3rem);
     grid-gap: 0.6rem;
     grid-template-areas:
         "display display display display"
@@ -29,12 +29,19 @@ main{
 }
 button{
     background-color: rgb(250, 235, 225);
+    color:rgb(52, 56, 54);
     padding: 5px;
     border-radius: 0.3rem;
     box-shadow: 0 2px 0 rgb(156, 148, 148);
     font-size: 1.3rem;
+    transition: 0.2s all;
+    cursor: pointer;
 }
-
+button:active{
+    background-color: rgba(250, 235, 225, 0.788);
+    box-shadow: 0 1px 0 rgb(156, 148, 148);
+    transform: translateY(1px);
+}
 #display{
     grid-area: display;
     background-color: rgb(122, 120, 153);
@@ -45,6 +52,7 @@ button{
     justify-content: flex-end;
     align-items: flex-end;
     padding: 0.1rem 0.3rem;
+    margin-bottom: 0.3rem;
 }
 #one{
     grid-area: one;
