@@ -14,8 +14,8 @@ main{
     padding-bottom: 1.2rem;
     border-radius: 0.9rem;
     display: grid;
-    grid-template-columns: repeat(4, 3rem);
-    grid-template-rows: 3.5rem repeat(5, 3rem);
+    grid-template-columns: repeat(4, 3.5rem);
+    grid-template-rows: 4.2rem repeat(5, 3.5rem);
     grid-gap: 0.6rem;
     grid-template-areas:
         "display display display display"
@@ -43,16 +43,22 @@ button:active{
     transform: translateY(1px);
 }
 #display{
-    grid-area: display;
     background-color: rgb(122, 120, 153);
     color:rgb(61, 224, 127);
     /* color:rgb(92, 223, 212); */
-    font-size: 1.5rem;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: flex-end;
     padding: 0.1rem 0.3rem;
     margin-bottom: 0.3rem;
+    grid-area: display;
+}
+#result{
+    font-size: 1.5rem;
+}
+#preview{
+    font-size: 1.2rem;
 }
 #one{
     grid-area: one;

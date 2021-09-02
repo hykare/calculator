@@ -1,5 +1,6 @@
-const display = document.getElementById('display');
 const calculator = document.getElementById('calculator');
+const previewDisplay = document.getElementById('preview');
+const resultDisplay = document.getElementById('result');
 const equals = document.getElementById('equals');
 const clear = document.getElementById('clear');
 
@@ -8,8 +9,11 @@ calculator.addEventListener('click', (e) => {
     if (e.target.className === 'operator')
         evaluateOperator(e);
 });
+calculator.addEventListener('click', updatePreview);
 equals.addEventListener('click', evaluateEquals);
 clear.addEventListener('click', clearMemory);
+
+
 
 function add(a, b) {
     return +a + +b;
@@ -39,11 +43,11 @@ function operate(operator, a, b) {
 function inputDigit(e) {
     if (e.target.className === 'digit') {
         displayValue += e.target.value;
-        updateDisplay(displayValue);
+        updateResultDisplay(displayValue);
     }
 }
-function updateDisplay(displayValue) {
-    display.textContent = displayValue;
+function updateResultDisplay(displayValue) {
+    resultDisplay.textContent = displayValue;
 }
 function evaluateOperator(e) {
     if (previousValue) {
@@ -53,7 +57,7 @@ function evaluateOperator(e) {
     else previousValue = displayValue;
     operator = e.target.value;
     displayValue = '';
-    updateDisplay(previousValue);
+    updateResultDisplay(previousValue);
 }
 function evaluateEquals() {
     currentValue = displayValue;
@@ -63,16 +67,21 @@ function evaluateEquals() {
     }
     displayValue = '';
     previousValue = '';
-    updateDisplay(result);
+    updateResultDisplay(result);
 }
 function clearMemory() {
     displayValue = '';
     previousValue = '';
     currentValue = '';
     operator = '';
-    updateDisplay('');
+    updateResultDisplay('');
+    previewDisplay.textContent = '';
+}
+function updatePreview(e){
+previewDisplay.textContent += e.target.value;
 }
 let displayValue = '';
+
 let previousValue = '';
 let currentValue = '';
 let operator = '';
