@@ -6,9 +6,9 @@ const clear = document.getElementById('clear');
 calculator.addEventListener('click', inputDigit);
 calculator.addEventListener('click', (e) => {
     if (e.target.className === 'operator')
-        makeOperation(e);
+        evaluateOperator(e);
 });
-equals.addEventListener('click', evaluate);
+equals.addEventListener('click', evaluateEquals);
 clear.addEventListener('click', clearMemory);
 
 function add(a, b) {
@@ -39,36 +39,40 @@ function operate(operator, a, b) {
 function inputDigit(e) {
     if (e.target.className === 'digit') {
         displayValue += e.target.value;
-        updateDisplay();
+        updateDisplay(displayValue);
     }
 }
-function updateDisplay() {
+function updateDisplay(displayValue) {
     display.textContent = displayValue;
 }
-function makeOperation(e) {
-    if (num1) {
-        num2 = displayValue;
-        num1 = operate(operator, num1, num2);
+function evaluateOperator(e) {
+    if (previousValue) {
+        currentValue = displayValue;
+        previousValue = operate(operator, previousValue, currentValue);
     }
-    else num1 = displayValue;
+    else previousValue = displayValue;
     operator = e.target.value;
     displayValue = '';
-    updateDisplay();
+    updateDisplay(previousValue);
 }
-function evaluate() {
-    num2 = displayValue;
-    displayValue = operate(operator, num1, num2);
-    num1 = '';
-    updateDisplay();
+function evaluateEquals() {
+    currentValue = displayValue;
+    let result = '';
+    if (previousValue) {    //doesn't  if there's just one number
+        result = operate(operator, previousValue, currentValue);
+    }
+    displayValue = '';
+    previousValue = '';
+    updateDisplay(result);
 }
 function clearMemory() {
     displayValue = '';
-    num1 = '';
-    num2 = '';
+    previousValue = '';
+    currentValue = '';
     operator = '';
-    updateDisplay();
+    updateDisplay('');
 }
 let displayValue = '';
-let num1 = '';
-let num2 = '';
+let previousValue = '';
+let currentValue = '';
 let operator = '';
