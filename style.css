@@ -6,7 +6,6 @@ main{
     justify-content: center;
     padding-top: 10vh;
 }
-
 #calculator{
     background-color: rgb(89, 89, 161);
     padding: 1.1rem;
@@ -25,7 +24,6 @@ main{
         "one two three subtract"
         "zero dot equals add"
 ;
-
 }
 button{
     background-color: rgb(250, 235, 225);
@@ -43,6 +41,8 @@ button:active{
     transform: translateY(1px);
 }
 #display{
+    overflow: hidden;
+    white-space: nowrap;
     grid-area: display;
     display: flex;
     flex-direction: column;
