@@ -1,5 +1,10 @@
+html{
+    height: 100%;
+}
 body{
     font-family: sans-serif;
+    /* background: rgb(217,216,239);
+    background: linear-gradient(180deg, rgba(217,216,239,1) 0%, rgba(254,255,157,1) 100%);  */
 }
 main{
     display: flex;
@@ -8,9 +13,9 @@ main{
 }
 #calculator{
     background-color: rgb(89, 89, 161);
-    padding: 1.1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.2rem;
+    padding: 1.2rem;
+    padding-top: 1.6rem;
+    padding-bottom: 1.4rem;
     border-radius: 0.9rem;
     display: grid;
     grid-template-columns: repeat(4, 3.5rem);
@@ -18,10 +23,10 @@ main{
     grid-gap: 0.6rem;
     grid-template-areas:
         "display display display display"
-        "AC . . ."
-        "seven eight nine divide"
-        "four five six multiply"
-        "one two three subtract"
+        "clear allClear allClear divide"
+        "seven eight nine multiply"
+        "four five six subtract"
+        "one two three add"
         "zero dot equals add"
 ;
 }
@@ -31,9 +36,15 @@ button{
     padding: 5px;
     border-radius: 0.3rem;
     box-shadow: 0 2px 0 rgb(156, 148, 148);
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     transition: 0.2s all;
     cursor: pointer;
+}
+.operator{
+    background-color: rgb(179, 215, 230);
+    box-shadow: 0 2px 0 rgb(165, 135, 201);
+    /* font-size: 1.6rem; */
+
 }
 button:active{
     background-color: rgba(250, 235, 225, 0.788);
@@ -108,4 +119,10 @@ button:active{
 }
 #add{
     grid-area: add;
+}
+#clear{
+    grid-area: clear;
+}
+#allClear{
+    grid-area: allClear;
 }
